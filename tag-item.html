@@ -1,5 +1,8 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="bower_components/iron-icon/iron-icon.html">
 
 <dom-module id="tag-item">
 
@@ -9,9 +12,35 @@
       box-sizing: border-box;
       font-family: 'Roboto', 'Noto', sans-serif;
     }
+    .default-icon{
+      color: #4285f4;
+      width: 20px;
+      height: 20px;
+      padding:0;
+    }
+    .default-tag{
+      margin-bottom: 5px;
+      display: inline-block;
+      border: 1px solid #03A9F4;
+      font-size: 13px;
+      color: #616161;
+      border-radius: 4px;
+    }
+    .readonly-no{
+      padding: 5px 5px 5px 10px;
+    }
+    .readonly-ok{
+      padding: 5px 10px;
+    }
+
   </style>
 
   <template>
+
+    <div class$="{{ styletag }}">
+      <span class="value-tag">[[ value ]]</span>
+      <paper-icon-button icon="icons:close" class$="{{ styleicon }}" hidden="{{ readonly }}" on-tap="_removeTag"></paper-icon-button>
+    </div>
       
   </template>
 
@@ -21,11 +50,31 @@
   Polymer({
     is: 'tag-item',
     properties: {
-      tagColor: String,
-      fontColor: String,
-      borderColor: String,
+      styletag: {
+        type: String,
+        value: 'default-tag'
+      },
+      styleicon: {
+        type: String,
+        value: 'default-icon'
+      },
       value: String,
-      index: Number
+      readonly: { 
+        type: Boolean,
+        value: false,
+        observer: '_readonlyChanged'
+      }
+    },
+    _readonlyChanged: function(newValue, oldValue){
+        if(newValue){
+          this.styletag = this.styletag + ' readonly-ok';
+        }else{
+          this.styletag = this.styletag + ' readonly-no';
+        }
+    },
+    _removeTag: function(event){
+      this.fire('tag-removed');
+      event.target.parentElement.parentElement.parentElement.remove();
     }
   });
 </script>
