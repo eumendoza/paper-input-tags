@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>paper-input-tags</title>
+		<script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="../tag-item.html">
+	</head>
+	<body unresolved>
+		<template is="dom-bind" id="app">
+			<style>
+				.colorRed{
+					color: red;
+				}
+			</style>
+			<tag-item value="pepe@atsistemas.com"></tag-item>
+			<tag-item value="pepito@atsistemas.com"></tag-item>
+			<tag-item value="pepote@atsistemas.com"></tag-item>
+		</template>
+		<script>
+			var app = document.querySelector('#app');
+			window.addEventListener('WebComponentsReady', function(){
+				app.trueVal = true;
+				app.falseVal = false;
+				app.classVal = 'colorRed';
+			});
+
+			window.addEventListener('tag-removed', function(){
+				console.log('Removed');
+			});
+		</script>
+	</body>
+</html>
