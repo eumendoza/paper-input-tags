@@ -5,23 +5,23 @@
 
 <dom-module id="paper-input-tags">
 	<style>
-	 tag-item{
-	 	margin-right:5px;
-	 }
-	 .tagscounter{
-	 	display: inline-block;
-	 }
-	 paper-badge{
-	 	display: inline-block;
-	 	position: inherit;
-	 }
+		 tag-item{
+		 	margin-right:5px;
+		 }
+		 paper-badge{
+		 	display: inline-block;
+		 	position: inherit;
+		 }
+		 .tagscounter{
+		 	display: inline-block;
+		 }
 	</style>
 
 	<template>
 
 		<paper-input-container id="input-tags">
 			<template is="dom-repeat" items="{{ tags }}">
-      			<tag-item value="{{ item }}" tags="{{ tags }}" index="{{ index }}"></tag-item>
+      			<tag-item styletag="{{ styletag }}" styleicon="{{ styleicon }}" value="{{ item }}" tags="{{ tags }}" index="{{ index }}"></tag-item>
       		</template>
       		<template is="dom-if" if="{{ label }}">
 				<label>[[label]]</label>
@@ -31,7 +31,7 @@
 
 		<template is="dom-if" if="{{ showtagcounter }}">
 			<div class="tagscounter">
-				 <paper-badge label="{{ _tagsLength(tags) }}"></paper-badge>[[showtagcounter]]
+				 <paper-badge class$="{{ stylecounter }}" label="{{ _tagsLength(tags) }}"></paper-badge>[[showtagcounter]]
 			</div>
 		</template>
 				
@@ -44,6 +44,11 @@
 		is: 'paper-input-tags',
 		properties: {
 			label: String,
+			showtagcounter: String,
+			index: Number,
+			stylecounter: String,
+			styletag: String,
+			styleicon: String,
 			tags:{
 				type: Array,
 				notify: true,

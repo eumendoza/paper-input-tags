@@ -15,22 +15,88 @@
 				body{
 					font-family: 'Roboto', 'Noto', sans-serif;
 				}
+				.redstyle{
+					border:1px solid red;
+					background: red;
+					color: white;
+					border-radius: 25px;
+				}
+				.bluestyle{
+					border:1px solid blue;
+					background: blue;
+					color: white;
+				}
+				.bluecounter #badge.paper-badge{
+					background-color: #4285f4;
+				}
+				.greenstyle{
+					border:1px solid green;
+					background: white;
+					color: green;
+					border-radius:5px;
+				}
+				.whitestyleicon{
+					color:white;
+					width: 20px;
+					height: 20px;
+					padding: 0;
+				}
+				.greenstyleicon{
+					color:green;
+					width: 20px;
+					height: 20px;
+					padding: 0;
+				}
 			</style>
+
 			<h1>tag-item</h1>
+
+				<h2>normal</h2>
+					<tag-item value="eu.mendoza@gmail.com"></tag-item>
+					<tag-item value="eumendoza@gmail.com"></tag-item>
+
 				<h2>readonly property</h2>
-				<tag-item value="eu.mendoza@gmail.com" readonly></tag-item>
-				<h2>normal</h2>
-				<tag-item value="eu.mendoza@gmail.com"></tag-item>
-				<tag-item value="eumendoza@gmail.com"></tag-item>
+					<tag-item value="eu.mendoza@gmail.com" readonly></tag-item>
+
+				<h2>custom style</h2>
+					<tag-item value="eu.mendoza@gmail.com" styletag="redstyle" styleicon="whitestyleicon"></tag-item>
+					<tag-item value="eu.mendoza@gmail.com" styletag="bluestyle" styleicon="whitestyleicon"></tag-item>
+					<tag-item value="eu.mendoza@gmail.com" styletag="greenstyle" styleicon="greenstyleicon"></tag-item>
+
 			<h1>paper-input-tags</h1>
-				<h2>tags by default</h2>
-				<paper-input-tags tags="[[ tagsDefault ]]"></paper-input-tags>
-				<h2>label and tag-counter</h2>
-				<paper-input-tags label="Colors" showtagcounter=" colors added"></paper-input-tags>
+
 				<h2>normal</h2>
-				<paper-input-tags></paper-input-tags>
+					<paper-input-tags></paper-input-tags>
+
+				<h2>pre-loaded tags</h2>
+					<paper-input-tags tags="[[ tagsDefault ]]"></paper-input-tags>
+
+				<h2>show label</h2>
+					<paper-input-tags label="Colors"></paper-input-tags>
+
+				<h2>show tag counter</h2>
+					<paper-input-tags showtagcounter=" colors"></paper-input-tags>
+
+				<h2>show tag counter with custom style</h2>
+					<paper-input-tags showtagcounter=" colors" stylecounter="bluecounter"></paper-input-tags>
+
+				<h2>show label and tag counter</h2>
+					<paper-input-tags label="Favourite colors" showtagcounter=" colors"></paper-input-tags>
+
+				<h2>custom tags style</h2>
+					<paper-input-tags label="Green Vegetables" styletag="greenstyle" styleicon="greenstyleicon" showtagcounter=" vegetables" readonly></paper-input-tags>
+				
 			<h1>paper-textarea-tags</h1>
-			<paper-textarea-tags></paper-textarea-tags>
+
+				<h2>normal</h2>
+					<paper-textarea-tags></paper-textarea-tags>
+
+				<h2>pre-loaded tags</h2>
+					<paper-textarea-tags tags="[[ tagsDefault ]]"></paper-textarea-tags>
+
+				<h2>tag-counter</h2>
+					<paper-textarea-tags tags="[[ tagsDefault ]]" showtagcounter=" colors"></paper-textarea-tags>
+
 		</template>
 		<script>
 			var app = document.querySelector('#app');
