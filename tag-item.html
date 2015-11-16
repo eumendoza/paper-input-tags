@@ -1,5 +1,4 @@
 <link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/paper-input/paper-input.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="bower_components/iron-icon/iron-icon.html">
@@ -8,7 +7,7 @@
 
   <style>
     :host {
-      display: block;
+      display: inline-block;
       box-sizing: border-box;
       font-family: 'Roboto', 'Noto', sans-serif;
     }
@@ -63,7 +62,12 @@
         type: Boolean,
         value: false,
         observer: '_readonlyChanged'
-      }
+      },
+      tags:{
+        type: Array,
+        notify: true
+      },
+      index: Number
     },
     _readonlyChanged: function(newValue, oldValue){
         if(newValue){
@@ -74,7 +78,14 @@
     },
     _removeTag: function(event){
       this.fire('tag-removed');
-      event.target.parentElement.parentElement.parentElement.remove();
+      var parent = event.target.parentElement.parentElement.parentElement;
+      if( this.tags == undefined){
+        parent.remove();
+      }else{
+        var index = parent.index;
+        this.tags.splice(index,1);
+        this.tags = this.tags.slice();
+      }
     }
   });
 </script>

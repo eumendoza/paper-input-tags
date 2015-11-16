@@ -6,28 +6,38 @@
 		<title>paper-input-tags</title>
 		<script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
 		<link rel="import" href="../tag-item.html">
+		<link rel="import" href="../paper-input-tags.html">
+		<link rel="import" href="../paper-textarea-tags.html">
 	</head>
 	<body unresolved>
 		<template is="dom-bind" id="app">
 			<style>
-				.colorRed{
-					color: red;
+				body{
+					font-family: 'Roboto', 'Noto', sans-serif;
 				}
 			</style>
-			<tag-item value="pepe@atsistemas.com"></tag-item>
-			<tag-item value="pepito@atsistemas.com"></tag-item>
-			<tag-item value="pepote@atsistemas.com"></tag-item>
+			<h1>tag-item</h1>
+				<h2>readonly property</h2>
+				<tag-item value="eu.mendoza@gmail.com" readonly></tag-item>
+				<h2>normal</h2>
+				<tag-item value="eu.mendoza@gmail.com"></tag-item>
+				<tag-item value="eumendoza@gmail.com"></tag-item>
+			<h1>paper-input-tags</h1>
+				<h2>tags by default</h2>
+				<paper-input-tags tags="[[ tagsDefault ]]"></paper-input-tags>
+				<h2>label and tag-counter</h2>
+				<paper-input-tags label="Colors" showtagcounter=" colors added"></paper-input-tags>
+				<h2>normal</h2>
+				<paper-input-tags></paper-input-tags>
+			<h1>paper-textarea-tags</h1>
+			<paper-textarea-tags></paper-textarea-tags>
 		</template>
 		<script>
 			var app = document.querySelector('#app');
 			window.addEventListener('WebComponentsReady', function(){
 				app.trueVal = true;
 				app.falseVal = false;
-				app.classVal = 'colorRed';
-			});
-
-			window.addEventListener('tag-removed', function(){
-				console.log('Removed');
+				app.tagsDefault = ["One tag","Two tags", "Three tags", "Four tags"];
 			});
 		</script>
 	</body>
