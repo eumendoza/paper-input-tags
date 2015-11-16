@@ -1,0 +1,90 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/paper-input/paper-input.html">
+<link rel="import" href="bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="tag-item.html">
+
+<dom-module id="paper-textarea-tags">
+	<style>
+		 tag-item{
+		 	margin-right:5px;
+		 }
+		 paper-badge{
+		 	display: inline-block;
+		 	position: inherit;
+		 }
+		 #input-tags{
+		 	padding:0 0 8px 0;
+		 }
+		 #input-tags input{
+		 	display: inline-block;
+		 	min-width: 20%;
+		 	width: inherit;
+		 	max-width: 100%;
+		 }
+		 .tagscounter{
+		 	display: inline-block;
+		 }
+	</style>
+
+	<template>
+
+		<paper-input-container id="input-tags">
+			<template is="dom-repeat" items="{{ tags }}">
+	  			<tag-item value="{{ item }}" tags="{{ tags }}" index="{{ index }}"></tag-item>
+	  		</template>
+      		<input is="iron-input" on-keydown="_keyDown"></input>
+		</paper-input-container>
+
+		<template is="dom-if" if="{{ showtagcounter }}">
+			<div class="tagscounter">
+				 <paper-badge label="{{ _tagsLength(tags) }}"></paper-badge>[[showtagcounter]]
+			</div>
+		</template>
+
+	</template>
+</dom-module>
+
+<script>
+	Polymer({
+		is: 'paper-textarea-tags',
+		properties: {
+			tags:{
+				type: Array,
+				notify: true,
+				value: []
+			}
+		},
+		_addTag: function(tag){
+			if (typeof(this.tags) == 'undefined'){
+        		this.tags = [];
+      		}
+			this.tags.push(tag);
+			this.tags = this.tags.slice();
+		},
+		_tagsLength: function(tags){
+			return tags.length;
+		},
+		_removeLast: function(){
+			this.tags.pop();
+			this.tags = this.tags.slice();
+		},
+		_getInputValue: function(inputvalue){
+			return inputvalue.trim();
+		},
+		_keyDown: function(event){
+			var keyVal = event.which;
+			if (keyVal === 13){
+				var tag = this._getInputValue(event.target.value);
+				if((tag !== '') && (this.tags.indexOf(tag) < 0)) {
+					this._addTag(tag);
+					event.target.value = '';
+				}	
+			}else{
+				if((keyVal === 8) && (event.target.value == '')){
+					this._removeLast();
+				}
+			}
+		}
+	});
+
+</script>
