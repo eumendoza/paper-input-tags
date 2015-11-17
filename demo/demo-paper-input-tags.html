@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>Paper-input-tags demo</title>
+		<script src="../../webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="../paper-input-tags.html">
+	</head>
+	<body unresolved>
+		<template is="dom-bind" id="app">
+			<style>
+				body{
+					font-family: 'Roboto', 'Noto', sans-serif;
+				}
+				.greenstyle{
+					border: 1px solid green;
+					background: white;
+					color: green;
+					border-radius: 5px;
+					padding: 5px 5px 5px 10px;
+				}
+				.greenstyleicon{
+					color: green;
+					width: 20px;
+					height: 20px;
+					padding: 0;
+				}
+				.greencounter #badge.paper-badge{
+					background-color: green;
+				}
+			</style>
+
+			<h1>paper-input-tags</h1>
+
+				<h2>normal</h2>
+					<paper-input-tags></paper-input-tags>
+
+				<h2>all features</h2>
+					<paper-input-tags tags="[[ tagsDefault ]]" styleicon="greenstyleicon" styletag="greenstyle" stylecounter="greencounter" showtagcounter=" vegetables" readonly="{{ falseVal }}"></paper-input-tags>
+
+		</template>
+		<script>
+			var app = document.querySelector('#app');
+			window.addEventListener('WebComponentsReady', function(){
+				app.falseVal = false;
+				app.tagsDefault = ["Carrots","Tomatoes", "Onions", "Potatotes"];
+			});
+		</script>
+	</body>
+</html>

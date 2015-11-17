@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+		<title>Paper elements with tags</title>
+		<script src="../../webcomponentsjs/webcomponents.js"></script>
+		<link rel="import" href="../paper-textarea-tags.html">
+	</head>
+	<body unresolved>
+		<template is="dom-bind" id="app">
+			<style>
+				body{
+					font-family: 'Roboto', 'Noto', sans-serif;
+				}
+				.redstyle{
+					border: 1px solid red;
+					background: white;
+					color: red;
+					border-radius: 5px;
+					padding: 5px 5px 5px 10px;
+					margin-bottom: 5px;
+				}
+				.redstyleicon{
+					color: red;
+					width: 20px;
+					height: 20px;
+					padding: 0;
+				}
+				.redcounter #badge.paper-badge{
+					background-color: red;
+				}
+			</style>
+				
+			<h1>paper-textarea-tags</h1>
+
+				<h2>normal</h2>
+					<paper-textarea-tags></paper-textarea-tags>
+
+				<h2>all features</h2>
+					<paper-textarea-tags tags="[[ tagsDefault ]]" styleicon="redstyleicon" styletag="redstyle" stylecounter="redcounter" showtagcounter=" colors"></paper-textarea-tags>
+
+		</template>
+		<script>
+			var app = document.querySelector('#app');
+			window.addEventListener('WebComponentsReady', function(){
+				app.trueVal = true;
+				app.falseVal = false;
+				app.tagsDefault = ["One tag","Two tags", "Three tags", "Four tags"];
+			});
+		</script>
+	</body>
+</html>

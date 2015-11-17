@@ -1,6 +1,6 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-<link rel="import" href="bower_components/paper-input/paper-input.html">
-<link rel="import" href="bower_components/paper-badge/paper-badge.html">
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-badge/paper-badge.html">
 <link rel="import" href="tag-item.html">
 
 <dom-module id="paper-input-tags">
@@ -20,12 +20,12 @@
 	<template>
 
 		<paper-input-container id="input-tags">
+			<template is="dom-if" if="{{ label }}">
+				<label>[[label]]</label>
+			</template>
 			<template is="dom-repeat" items="{{ tags }}">
       			<tag-item styletag="{{ styletag }}" styleicon="{{ styleicon }}" value="{{ item }}" tags="{{ tags }}" index="{{ index }}"></tag-item>
       		</template>
-      		<template is="dom-if" if="{{ label }}">
-				<label>[[label]]</label>
-			</template>
   			<input is="iron-input" on-keydown="_keyDown">
 		</paper-input-container>
 
@@ -35,49 +35,47 @@
 			</div>
 		</template>
 				
-
 	</template>
 </dom-module>
 
 <script>
 	Polymer({
-		is: 'paper-input-tags',
-		properties: {
-			label: String,
-			showtagcounter: String,
-			index: Number,
-			stylecounter: String,
-			styletag: String,
-			styleicon: String,
-			tags:{
-				type: Array,
-				notify: true,
-				value: []
-			}
-		},
-		_addTag: function(tag){
-			if (typeof(this.tags) == 'undefined'){
-        		this.tags = [];
-      		}
-			this.tags.push(tag);
-			this.tags = this.tags.slice();
-		},
-		_tagsLength: function(tags){
-			return tags.length;
-		},
-		_getInputValue: function(inputvalue){
-			return inputvalue.trim();
-		},
-		_keyDown: function(event){
-			var keyVal = event.which;
-			if (keyVal === 13){
-				var tag = this._getInputValue(event.target.value);
-				if((tag !== '') && (this.tags.indexOf(tag) < 0)) {
-					this._addTag(tag);
-					event.target.value = '';
-				}	
-			}
-		}
+	  is: 'paper-input-tags',
+	  properties: {
+	  	index: Number,
+	    label: String,
+	    showtagcounter: String,
+	    stylecounter: String,
+	    styleicon: String,
+	    styletag: String,
+	    tags: {
+	      type: Array,
+	      notify: true,
+	      value: []
+	    }
+	  },
+	  _addTag: function(tag) {
+	    if (typeof(this.tags) == 'undefined') {
+	      this.tags = [];
+	    }
+	    this.tags.push(tag);
+	    this.tags = this.tags.slice();
+	  },
+	  _tagsLength: function(tags) {
+	    return tags.length;
+	  },
+	  _getInputValue: function(inputvalue) {
+	    return inputvalue.trim();
+	  },
+	  _keyDown: function(event) {
+	    var keyVal = event.which;
+	    if (keyVal === 13) {
+	      var tag = this._getInputValue(event.target.value);
+	      if ((tag !== '') && (this.tags.indexOf(tag) < 0)) {
+	        this._addTag(tag);
+	        event.target.value = '';
+	      }
+	    }
+	  }
 	});
-
 </script>

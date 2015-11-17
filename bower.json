@@ -1,23 +1,25 @@
 {
   "name": "paper-input-tags",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "authors": [
     "Eugenio Mendoza <eu.mendoza@gmail.com>"
   ],
-  "description": "Polymer paper-input with tags",
+  "description": "Polymer paper elements with tags",
   "keywords": [
     "web-components",
     "polymer",
     "javascript",
     "paper-elements",
-    "paper-input"
+    "paper-input",
+    "paper",
+    "tags",
+    "polymer-tags"
   ],
   "main": "",
   "license": "MIT",
   "homepage": "https://github.com/eumendoza/paper-input-tags",
   "ignore": [
     "/.*",
-    "/test/",
     "/demo/"
   ],
   "dependencies": {
