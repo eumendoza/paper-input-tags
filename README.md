@@ -7,10 +7,10 @@ Polymer Paper elements with tags input.
 	<tag-item></tag-item>
 ![tag-item](http://s14.postimg.org/46cu658u9/tags.png)
 
-	<paper-input-tag></paper-input-tag>
+	<paper-input-tags></paper-input-tags>
 ![paper-input-tag](http://s2.postimg.org/5e859u7ex/input.png)
 
-	<paper-textarea-tag></paper-textarea-tag>
+	<paper-textarea-tags></paper-textarea-tags>
 ![paper-textarea-tag](http://s30.postimg.org/4btx1sdsx/textarea.png)
 
 ## Installation
