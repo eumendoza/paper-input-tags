@@ -19,7 +19,7 @@
 
 	<template>
 
-		<paper-input-container id="input-tags">
+		<paper-input-container id="input-tags" always-float-label="[[alwaysFloatLabel]]">
 			<template is="dom-if" if="{{ label }}">
 				<label>[[label]]</label>
 			</template>
@@ -44,6 +44,10 @@
 	  properties: {
 	  	index: Number,
 	    label: String,
+	    alwaysFloatLabel: {
+	      type: Boolean,
+	      value: false
+	    },
 	    showtagcounter: String,
 	    stylecounter: String,
 	    styleicon: String,
