@@ -73,7 +73,7 @@
 	  },
 	  _keyDown: function(event) {
 	    var keyVal = event.which;
-	    if (keyVal === 13) {
+	    if (keyVal === 13 || keyVal === 188) {
 	      var tag = this._getInputValue(event.target.value);
 	      if ((tag !== '') && (this.tags.indexOf(tag) < 0)) {
 	        this._addTag(tag);
