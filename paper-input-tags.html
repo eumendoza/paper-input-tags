@@ -19,7 +19,7 @@
 
 	<template>
 
-		<paper-input-container id="input-tags">
+		<paper-input-container id="input-tags" always-float-label="[[alwaysFloatLabel]]">
 			<template is="dom-if" if="{{ label }}">
 				<label>[[label]]</label>
 			</template>
@@ -44,6 +44,10 @@
 	  properties: {
 	  	index: Number,
 	    label: String,
+	    alwaysFloatLabel: {
+	      type: Boolean,
+	      value: false
+	    },
 	    showtagcounter: String,
 	    stylecounter: String,
 	    styleicon: String,
@@ -69,7 +73,7 @@
 	  },
 	  _keyDown: function(event) {
 	    var keyVal = event.which;
-	    if (keyVal === 13) {
+	    if (keyVal === 13 || keyVal === 188) {
 	      var tag = this._getInputValue(event.target.value);
 	      if ((tag !== '') && (this.tags.indexOf(tag) < 0)) {
 	        this._addTag(tag);
